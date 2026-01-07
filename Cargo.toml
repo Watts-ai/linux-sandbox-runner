@@ -1,0 +1,21 @@
+[package]
+name = "linux-sandbox-runner"
+version = "0.1.0"
+edition = "2021"
+description = "Linux sandbox execution binary using Landlock + seccomp from OpenAI Codex"
+license = "MIT"
+repository = "https://github.com/Watts-ai/linux-sandbox-runner"
+
+[[bin]]
+name = "linux-sandbox-runner"
+path = "src/main.rs"
+
+[dependencies]
+# Import codex-linux-sandbox from OpenAI Codex repository
+codex-linux-sandbox = { git = "https://github.com/openai/codex.git" }
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+opt-level = "z"
